@@ -1,0 +1,59 @@
+###Create a new book
+POST http://localhost:8080/books
+Content-Type: application/json
+Accept: application/v1+json
+
+{
+  "id": 1,
+  "title": "Design Pattern",
+  "isbn": "4334343",
+  "price": 345.99
+}
+
+
+
+
+###Get a book by id
+GET http://localhost:8080/books/123
+X-API-VERSION:1
+
+###
+GET http://localhost:8080/books/123
+X-API-VERSION:2
+
+
+
+###Get a collection of book
+GET http://localhost:8080/v1/books
+###
+GET http://localhost:8080/v2/books
+
+
+
+###Update book by id
+PUT http://localhost:8080/books/123?version=1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Design Pattern Version",
+  "isbn": "45677",
+  "price": 340.99
+}
+
+###
+PUT http://localhost:8080/books/123?version=2
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Design Pattern Version 2",
+  "isbn": "45677",
+  "price": 340.99
+}
+
+
+
+
+###Delete book by id
+DELETE http://localhost:8080/books/123
