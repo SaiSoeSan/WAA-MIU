@@ -13,7 +13,7 @@ public class Student {
 
     @ManyToMany
     @JoinTable(name = "student_course",
-    joinColumns = {@JoinColumn(name = "stud_id")},
+    joinColumns = {@JoinColumn(name = "stude_id")},
     inverseJoinColumns = {@JoinColumn(name = "course_id")})
     private List<Course> courses;
 }

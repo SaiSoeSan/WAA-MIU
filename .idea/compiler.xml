@@ -8,8 +8,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Lab1" />
-        <module name="restfulApp" />
+        <module name="cascading-demo" />
         <module name="association-lab" />
+        <module name="restfulApp" />
+        <module name="inheritanceLab" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,7 +23,9 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Lab1" options="-parameters" />
       <module name="association-lab" options="-parameters" />
+      <module name="cascading-demo" options="-parameters" />
       <module name="hibernate-demo" options="-parameters" />
+      <module name="inheritanceLab" options="-parameters" />
       <module name="restfulApp" options="-parameters" />
       <module name="spring-boot-data-demo" options="-parameters" />
     </option>

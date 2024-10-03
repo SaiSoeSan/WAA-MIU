@@ -1,0 +1,29 @@
+POST http://localhost:8080/customers
+Content-Type: application/json
+
+{
+  "name": "sai",
+  "age": 29,
+  "address": {
+    "street": "100 North 4th",
+    "city":  "Fairfield"
+  },
+  "creditCards": [
+    {
+      "number": "1111"
+    },
+    {
+      "number": "2222"
+    },
+    {
+      "number": "3333"
+    }
+  ]
+}
+
+
+###
+GET http://localhost:8080/customers
+
+###
+DELETE http://localhost:8080/customers/1/creditcards/1
