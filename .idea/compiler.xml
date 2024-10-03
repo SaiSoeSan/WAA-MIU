@@ -9,13 +9,21 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Lab1" />
         <module name="restfulApp" />
+        <module name="association-lab" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hibernate-demo" target="17" />
+      <module name="spring-boot-data-demo" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Lab1" options="-parameters" />
+      <module name="association-lab" options="-parameters" />
+      <module name="hibernate-demo" options="-parameters" />
       <module name="restfulApp" options="-parameters" />
+      <module name="spring-boot-data-demo" options="-parameters" />
     </option>
   </component>
 </project>
