@@ -10,9 +10,9 @@ public class Employee {
     private String lastName;
     private String email;
 
-    //@ManyToOne
-//    @JoinTable(name = "dept_employee",
-//    joinColumns = {@JoinColumn(name = "emp_id")},
-//    inverseJoinColumns = {@JoinColumn(name = "dept_id")})
-//    private Department department;
+    @ManyToOne
+    @JoinTable(name = "dept_employee",
+    joinColumns = {@JoinColumn(name = "emp_id")},
+    inverseJoinColumns = {@JoinColumn(name = "dept_id")})
+    private Department department;
 }
