@@ -13,8 +13,9 @@ public class Customer {
     private String address;
 
     @OneToMany
-    @JoinTable(name = "cust_reservation",
-    joinColumns = {@JoinColumn(name = "cust_id")},
-    inverseJoinColumns = {@JoinColumn(name = "res_id")})
+    @JoinColumn(name = "customer_id")
+//    @JoinTable(name = "cust_reservation",
+//    joinColumns = {@JoinColumn(name = "cust_id")},
+//    inverseJoinColumns = {@JoinColumn(name = "res_id")})
     private List<Reservation> reservations;
 }
