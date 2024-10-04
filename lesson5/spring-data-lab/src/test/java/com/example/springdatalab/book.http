@@ -1,0 +1,27 @@
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "title": "Learn Design Pattern",
+  "isbn": "13123132",
+  "price": 400.99
+}
+
+###
+GET http://localhost:8080/books
+
+###
+GET http://localhost:8080/books/2
+
+###
+PUT http://localhost:8080/books/2
+Content-Type: application/json
+
+{
+  "title": "Learn PHP Laravel",
+  "isbn": "123111",
+  "price": 450.99
+}
+
+###
+DELETE http://localhost:8080/books/1
