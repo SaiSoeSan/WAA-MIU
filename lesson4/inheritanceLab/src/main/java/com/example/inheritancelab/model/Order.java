@@ -21,8 +21,9 @@ public class Order {
     private Customer customer;
 
     @OneToMany
-    @JoinTable(name = "order_orderline",
-    joinColumns = @JoinColumn(name = "order_id"),
-    inverseJoinColumns = @JoinColumn(name = "orderline_id"))
+    @JoinColumn(name = "order_id")
+//    @JoinTable(name = "order_orderline",
+//    joinColumns = @JoinColumn(name = "order_id"),
+//    inverseJoinColumns = @JoinColumn(name = "orderline_id"))
     private List<OrderLine> orderLines;
 }
