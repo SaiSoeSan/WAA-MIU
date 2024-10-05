@@ -1,0 +1,20 @@
+POST http://localhost:8080/customers
+Content-Type: application/json
+
+{
+  "firstname": "Lilly",
+  "lastname": "Flower",
+  "email": "lilly.smith@gmail.com",
+  "phone": "23123213",
+  "shop": {
+    "id": 1,
+    "name": "my lovely coffee",
+    "address": "100 North"
+  }
+}
+
+###
+GET http://localhost:8080/customers?firstName=edward
+
+###
+GET http://localhost:8080/customers?shop_name=my lovely coffee

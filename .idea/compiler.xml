@@ -8,10 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Lab1" />
+        <module name="spring-data-demo" />
         <module name="cascading-demo" />
         <module name="spring-data-lab" />
-        <module name="association-lab" />
         <module name="restfulApp" />
+        <module name="association-lab" />
         <module name="inheritanceLab" />
       </profile>
     </annotationProcessing>
@@ -29,6 +30,7 @@
       <module name="inheritanceLab" options="-parameters" />
       <module name="restfulApp" options="-parameters" />
       <module name="spring-boot-data-demo" options="-parameters" />
+      <module name="spring-data-demo" options="-parameters" />
       <module name="spring-data-lab" options="-parameters" />
     </option>
   </component>
