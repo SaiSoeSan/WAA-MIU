@@ -1,7 +1,21 @@
-import React, { ChangeEvent, MouseEvent } from "react";
+import React, { ChangeEvent, MouseEvent, useEffect } from "react";
 import { useState } from "react";
 import "./App.scss";
 import avatar from "./images/bozai.png";
+
+type User = {
+  uid: string;
+  // avator: string;
+  uname: string;
+};
+
+type CommentDataType = {
+  rpid: number;
+  user: User;
+  content: string;
+  ctime: string;
+  like: number;
+};
 
 // Comment List data
 const defaultList = [
@@ -51,18 +65,28 @@ function App() {
     { type: "newest", text: "Newest" },
   ]);
 
-  const [user, setUser] = useState({
+  const [user, setUser] = useState<User>({
     // userid
     uid: "30009257",
     // profile
-    avatar,
+    // avatar: "",
     // username
     uname: "John",
   });
 
   const [filter, setFilter] = useState("");
 
-  const [commentData, setCommentData] = useState(defaultList);
+  const [commentData, setCommentData] = useState<CommentDataType[]>([]);
+
+  const fetchComments = async () => {
+    const res = await fetch("http://localhost:3004/data");
+    const result = await res.json();
+    setCommentData(result.posts);
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, []);
 
   const handleFilter = (type: string) => {
     setFilter(type);
@@ -94,21 +118,13 @@ function App() {
 
   const deleteHandler = (id: number) => {
     const foundItem = commentData.find((item) => item.rpid === id);
-    console.log(foundItem);
     if (foundItem?.user.uname === user.uname) {
       const updatedCommentData = commentData.filter((item) => item.rpid !== id);
       setCommentData(updatedCommentData);
     } else {
       alert("Unauthorized");
     }
-    alert("delete");
   };
-
-  // if (filter === "top") {
-  //   commentData.sort((a, b) => (b.like > a.like ? 1 : -1));
-  // } else {
-  //   commentData.sort((a, b) => (b.ctime > b.ctime ? 1 : -1));
-  // }
 
   return (
     <div className="app">
@@ -166,14 +182,14 @@ function App() {
               {/* profile */}
               <div className="root-reply-avatar">
                 <div className="bili-avatar">
-                  <img className="bili-avatar-img" alt="" />
+                  <img src={avatar} className="bili-avatar-img" alt="" />
                 </div>
               </div>
 
               <div className="content-wrap">
                 {/* username */}
                 <div className="user-info">
-                  <div className="user-name">{user.uname}</div>
+                  <div className="user-name">{data.user.uname}</div>
                 </div>
                 {/* comment content */}
                 <div className="root-reply">
