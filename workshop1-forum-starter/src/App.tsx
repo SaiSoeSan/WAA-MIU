@@ -2,6 +2,8 @@ import React, { ChangeEvent, MouseEvent, useEffect } from "react";
 import { useState } from "react";
 import "./App.scss";
 import avatar from "./images/bozai.png";
+import Item from "./components/Item";
+import PostItem from "./components/PostItem";
 
 type User = {
   uid: string;
@@ -97,23 +99,17 @@ function App() {
     }
   };
 
-  const [comment, setComment] = useState("");
-
-  const commentHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setComment(e.target.value);
-  };
-
   const postHandler = (e: MouseEvent<HTMLDivElement>) => {
     const newComment = {
       rpid: commentData.length + 1,
       user: user,
-      content: comment,
+      content: "",
       ctime: "10-19 09:00",
       like: 106,
     };
     if (filter === "newest") setCommentData([newComment, ...commentData]);
     else setCommentData([...commentData, newComment]);
-    setComment("");
+    // setComment("");
   };
 
   const deleteHandler = (id: number) => {
@@ -124,6 +120,12 @@ function App() {
     } else {
       alert("Unauthorized");
     }
+  };
+
+  const [comment, setComment] = useState("");
+
+  const commentHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setComment(e.target.value);
   };
 
   return (
@@ -152,64 +154,29 @@ function App() {
       </div>
 
       <div className="reply-wrap">
-        {/* comments */}
+        {/* <PostItem /> */}
+
         <div className="box-normal">
-          {/* current logged in user profile */}
           <div className="reply-box-avatar">
             <div className="bili-avatar">
               <img className="bili-avatar-img" src={avatar} alt="Profile" />
             </div>
           </div>
           <div className="reply-box-wrap">
-            {/* comment */}
             <textarea
               onChange={commentHandler}
               className="reply-box-textarea"
               placeholder="tell something..."
               value={comment}
             />
-            {/* post button */}
             <div className="reply-box-send" onClick={postHandler}>
               <div className="send-text">Post</div>
             </div>
           </div>
         </div>
-        {/* comment list */}
-        <div className="reply-list">
-          {/* comment item */}
-          {commentData.map((data) => (
-            <div key={data.rpid} className="reply-item">
-              {/* profile */}
-              <div className="root-reply-avatar">
-                <div className="bili-avatar">
-                  <img src={avatar} className="bili-avatar-img" alt="" />
-                </div>
-              </div>
 
-              <div className="content-wrap">
-                {/* username */}
-                <div className="user-info">
-                  <div className="user-name">{data.user.uname}</div>
-                </div>
-                {/* comment content */}
-                <div className="root-reply">
-                  <span className="reply-content">{data.content}</span>
-                  <div className="reply-info">
-                    {/* comment created time */}
-                    <span className="reply-time">{data.ctime}</span>
-                    {/* total likes */}
-                    <span className="reply-time">Like:{data.like}</span>
-                    <span
-                      onClick={() => deleteHandler(data.rpid)}
-                      className="delete-btn"
-                    >
-                      Delete
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="reply-list">
+          <Item items={commentData} onDelete={deleteHandler} />
         </div>
       </div>
     </div>
