@@ -18,10 +18,11 @@ type CommentDataType = {
 interface commentType {
   items: CommentDataType[];
   onDelete: (id: number) => void;
+  user : User
 }
 
 export default function Item(props: commentType) {
-  const { items, onDelete } = props;
+  const { items, onDelete, user } = props;
   return (
     <>
       {items.map((data) => (
@@ -42,12 +43,14 @@ export default function Item(props: commentType) {
               <div className="reply-info">
                 <span className="reply-time">{data.ctime}</span>
                 <span className="reply-time">Like:{data.like}</span>
-                <span
-                  onClick={() => onDelete(data.rpid)}
-                  className="delete-btn"
-                >
+                {
+                    data.user.uid === user.uid && <span
+                        onClick={() => onDelete(data.rpid)}
+                        className="delete-btn"
+                    >
                   Delete
                 </span>
+                }
               </div>
             </div>
           </div>

@@ -9,10 +9,11 @@ interface ThemeProviderType {
   children: ReactNode;
 }
 
+//create Context
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 //provide context provider
-export const ContextProvider = ({ children }: ThemeProviderType) => {
+export const ThemeProvider = ({ children }: ThemeProviderType) => {
   const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {

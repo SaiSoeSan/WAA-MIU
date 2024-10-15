@@ -103,7 +103,7 @@ function App() {
     const newComment = {
       rpid: commentData.length + 1,
       user: user,
-      content: "",
+      content: comment,
       ctime: "10-19 09:00",
       like: 106,
     };
@@ -176,7 +176,7 @@ function App() {
         </div>
 
         <div className="reply-list">
-          <Item items={commentData} onDelete={deleteHandler} />
+          <Item user={user} items={commentData} onDelete={deleteHandler} />
         </div>
       </div>
     </div>

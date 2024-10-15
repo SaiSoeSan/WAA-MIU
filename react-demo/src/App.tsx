@@ -1,4 +1,7 @@
 import React, {ChangeEvent, FormEvent, useRef, useState} from 'react';
+import {ThemeProvider} from "./ThemeContext";
+import Home from './Home';
+import ThemeToggler from "./ThemeToggler";
 
 function App() {
 
@@ -12,23 +15,27 @@ function App() {
     }
 
   return (
-    <div>
-
-      <form onSubmit={submitHandler}>
-          <div>
-            Username : <input type="text" ref={usernameRef} />
-          </div>
-        <div>
-          Password : <input type="password" ref={passwordRef}/>
-        </div>
-          <div>
-              Bio: <textarea ref={bioRef}></textarea>
-          </div>
-          <div>
-              <button>Register</button>
-          </div>
-      </form>
-    </div>
+      <ThemeProvider>
+          <Home />
+          <ThemeToggler />
+      </ThemeProvider>
+    // <div>
+    //
+    //   <form onSubmit={submitHandler}>
+    //       <div>
+    //         Username : <input type="text" ref={usernameRef} />
+    //       </div>
+    //     <div>
+    //       Password : <input type="password" ref={passwordRef}/>
+    //     </div>
+    //       <div>
+    //           Bio: <textarea ref={bioRef}></textarea>
+    //       </div>
+    //       <div>
+    //           <button>Register</button>
+    //       </div>
+    //   </form>
+    // </div>
   );
 }
 
