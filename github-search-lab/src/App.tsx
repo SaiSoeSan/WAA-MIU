@@ -14,7 +14,13 @@ function App() {
             const response = await searchUser(name);
             const data = await  response.data;
             //set users
-            setUsers(data.items);
+            const cleanedUsers = data.items.map(({ login, id, avatar_url,html_url }:any) => ({
+                name : login,
+                id,
+                avatar_url,
+                html_url
+            }));
+            setUsers(cleanedUsers);
         }catch (e){
             throw new Error("Failed to search users")
         }
