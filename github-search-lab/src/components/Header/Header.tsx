@@ -1,4 +1,4 @@
-import React,{useRef} from "react";
+import React,{useRef,KeyboardEvent} from "react";
 
 
 type PropType = {
@@ -22,7 +22,9 @@ const Header = (props : PropType) => {
         <section className="jumbotron">
             <h3 className="jumbotron-heading">Search Github Users</h3>
             <div>
-                <input type="text" placeholder="Enter the name you search" ref={nameRef}/>&nbsp;
+                <input type="text" onKeyDown={(e:KeyboardEvent<HTMLInputElement>) => {
+                    if(e.key === 'Enter') searchHandler()
+                } } placeholder="Enter the name you search" ref={nameRef}/>&nbsp;
                 <button onClick={searchHandler}>Search</button>
             </div>
         </section>
